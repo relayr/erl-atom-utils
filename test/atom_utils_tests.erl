@@ -41,7 +41,9 @@ append_suffix_test() ->
     Atom3 = atom_utils:append_suffix('Atom1', "buba"),
     ?assertEqual('Atom1buba', Atom3),
     Atom4 = atom_utils:append_suffix('', "lufa"),
-    ?assertEqual(lufa, Atom4).
+    ?assertEqual(lufa, Atom4),
+    Atom5 = atom_utils:append_suffix(animal, <<"s">>),
+    ?assertEqual(animals, Atom5).
 
 append_id_test() ->
     Atom1 = atom_utils:append_id(atom, 3),

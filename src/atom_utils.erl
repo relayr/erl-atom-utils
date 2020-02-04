@@ -37,7 +37,9 @@ append_id(Atom, Id) ->
     IdStr = integer_to_list(Id),
     append_suffix(Atom, "_" ++ IdStr).
 
--spec append_suffix(Base :: atom(), Suffix :: string()) -> Result :: atom().
+-spec append_suffix(Base :: atom(), Suffix :: string() | binary()) -> Result :: atom().
+append_suffix(Base, Suffix) when is_atom(Base), is_binary(Suffix) ->
+    append_suffix(Base, binary_to_list(Suffix));
 append_suffix(Base, Suffix) when is_atom(Base), is_list(Suffix) ->
     BaseStr = atom_to_list(Base),
     from_string(BaseStr ++ Suffix).
